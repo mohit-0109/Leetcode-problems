@@ -39,7 +39,7 @@ void Graph::addEdge(int u, int v, int w)
 void Graph::shortestPath(int src) 
 { 
     set<pair<int,int>> setds;  //weight first, vertex seciond;
-    vector<int> dist(V,INF);
+    vector<int> dist(V,INF);   
   
     setds.insert(make_pair(0,src));
     dist[src]=0;
@@ -54,12 +54,12 @@ void Graph::shortestPath(int src)
         for(auto x: adj[u])
         {
             int v=x.first;
-            int weight = x.second;
+            int weight = x.second;   // get weight of vertex v
 
-            if( dist[u]+weight < dist[v] )
+            if( dist[u]+weight < dist[v] ) // compare dist if u plus weight with distance of vertex v 
             {
                 if(dist[v]!=INF)
-                    setds.erase(setds.find(make_pair(dist[v],v)));
+                    setds.erase(setds.find(make_pair(dist[v],v))); // delete if vertex v already present in set
                 dist[v]= dist[u]+weight;
                 setds.insert(make_pair(dist[v],v));
             }
